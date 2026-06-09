@@ -3,7 +3,10 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "lnk_azure_sql",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"prm_lnk_database": "AdventureWorksLT"
+			}
 		},
 		"parameters": {
 			"prm_table_name": {
