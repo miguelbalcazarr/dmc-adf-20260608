@@ -1,0 +1,14 @@
+{
+	"name": "lnk_kv",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://mbc-kvdataengineered3.vault.azure.net/",
+			"credential": {
+				"referenceName": "cred_uami",
+				"type": "CredentialReference"
+			}
+		}
+	}
+}
