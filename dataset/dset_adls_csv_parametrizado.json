@@ -1,0 +1,39 @@
+{
+	"name": "dset_adls_csv_parametrizado",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_adls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"prm_file_name": {
+				"type": "string"
+			},
+			"prm_file_directory": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(\n    dataset().prm_file_name,\n    '_',\n    utcNow(),\n    '.csv'\n)",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().prm_file_directory",
+					"type": "Expression"
+				},
+				"fileSystem": "landing"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

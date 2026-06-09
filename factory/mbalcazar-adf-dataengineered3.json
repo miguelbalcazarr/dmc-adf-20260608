@@ -1,0 +1,27 @@
+{
+	"name": "mbalcazar-adf-dataengineered3",
+	"properties": {
+		"globalParameters": {
+			"prm_global": {
+				"type": "string",
+				"value": "12345"
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "westus2",
+	"identity": {
+		"type": "SystemAssigned,UserAssigned",
+		"principalId": "3befcf02-d0ce-407a-8337-d8b68457e330",
+		"tenantId": "20f4acc9-f9f2-4ee9-b614-bc33742ece36",
+		"userAssignedIdentities": {
+			"/subscriptions/b497fd69-266c-46a9-b55b-8be0cd579667/resourcegroups/mbalcazar-rg-azure-de-ed3/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mbalcazar-uami-dataengineered3": {
+				"clientId": "6eaaf57a-096e-4ff9-9f3f-e2a436e9aedd",
+				"principalId": "ba11957a-dda2-4a58-9103-719455c8d10a"
+			}
+		}
+	}
+}

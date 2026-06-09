@@ -1,0 +1,97 @@
+{
+	"name": "ppl_azure_sql_parametrizado",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copiar SQL a ADLS",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"additionalColumns": [
+							{
+								"name": "fecha_extraccion",
+								"value": {
+									"value": "@utcNow()",
+									"type": "Expression"
+								}
+							}
+						],
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "dset_azure_sql_parametrizado",
+						"type": "DatasetReference",
+						"parameters": {
+							"prm_table_name": {
+								"value": "@pipeline().parameters.prm_ppl_table_name",
+								"type": "Expression"
+							},
+							"prm_schema_name": "SalesLT"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dset_adls_csv_parametrizado",
+						"type": "DatasetReference",
+						"parameters": {
+							"prm_file_name": {
+								"value": "@pipeline().parameters.prm_ppl_table_name",
+								"type": "Expression"
+							},
+							"prm_file_directory": {
+								"value": "@pipeline().parameters.prm_ppl_table_name",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"prm_ppl_table_name": {
+				"type": "string",
+				"defaultValue": "Customer"
+			}
+		},
+		"folder": {
+			"name": "sesion_02/azure_sql"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-06-04T03:55:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
