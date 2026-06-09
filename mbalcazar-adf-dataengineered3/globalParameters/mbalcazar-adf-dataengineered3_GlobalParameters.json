@@ -1,0 +1,6 @@
+{
+	"prm_global": {
+		"type": "string",
+		"value": "12345"
+	}
+}

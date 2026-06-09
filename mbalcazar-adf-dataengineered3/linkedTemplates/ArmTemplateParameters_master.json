@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mbalcazar-adf-dataengineered3"
+		},
+		"lnk_adls_properties_typeProperties_url": {
+			"value": "https://mbalcazarstad3.dfs.core.windows.net/"
+		},
+		"lnk_azure_sql_properties_typeProperties_server": {
+			"value": "srvsqlmbalcazar.database.windows.net"
+		},
+		"lnk_azure_sql_properties_typeProperties_database": {
+			"value": "@{linkedService().prm_lnk_database}"
+		},
+		"lnk_azure_sql_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"lnk_kv_properties_typeProperties_baseUrl": {
+			"value": "https://mbc-kvdataengineered3.vault.azure.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
