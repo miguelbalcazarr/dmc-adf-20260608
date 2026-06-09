@@ -1,11 +1,16 @@
 {
 	"name": "lnk_azure_sql",
 	"properties": {
+		"parameters": {
+			"prm_lnk_database": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
 			"server": "srvsqlmbalcazar.database.windows.net",
-			"database": "AdventureWorksLT",
+			"database": "@{linkedService().prm_lnk_database}",
 			"encrypt": "mandatory",
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
